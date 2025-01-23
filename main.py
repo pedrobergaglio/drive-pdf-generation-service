@@ -101,4 +101,4 @@ def generate_pdf_endpoint():
     return {"message": "PDF generated and uploaded successfully", "file": output_filename, "drive_file_id": drive_file_id}, 200
 
 if __name__ == "__main__":
-    app.run(port=5001, debug=True)
+    app.run(port=5001, debug=False)
