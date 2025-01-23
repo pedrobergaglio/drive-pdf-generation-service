@@ -81,10 +81,25 @@ def generate_pdf(data, output_path):
     
     pdf.output(output_path)
 def upload_to_drive(file_path, file_name):
-    file_drive = drive.CreateFile({'title': file_name, 'parents': [{'id': folder_id}]})
-    file_drive.SetContentFile(file_path)
-    file_drive.Upload()
+    # Search for an existing file with the same name
+    query = f"title='{file_name}' and '{folder_id}' in parents and trashed=false"
+    file_list = drive.ListFile({'q': query}).GetList()
+
+    if file_list:
+        # File exists → Update it
+        file_drive = file_list[0]
+        file_drive.SetContentFile(file_path)
+        file_drive.Upload()
+        print(f"Updated existing file: {file_name}")
+    else:
+        # File doesn't exist → Create a new one
+        file_drive = drive.CreateFile({'title': file_name, 'parents': [{'id': folder_id}]})
+        file_drive.SetContentFile(file_path)
+        file_drive.Upload()
+        print(f"Created new file: {file_name}")
+
     return file_drive['id']
+
 
 @app.route("/generate", methods=["POST"])
 def generate_pdf_endpoint():
