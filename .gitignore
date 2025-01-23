@@ -1,0 +1,21 @@
+# Ignore all JSON files
+*.json
+
+# System files
+.DS_Store
+.env
+service_account.json
+
+# Dependencies
+/node_modules
+/vendor
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Optional: Un-ignore specific JSON files that should be tracked
+# !package.json
+# !tsconfig.json
