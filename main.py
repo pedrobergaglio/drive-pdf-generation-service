@@ -207,8 +207,8 @@ def generate_presupuesto(data, output_path):
         # Add to required fields validation
         required_fields = ['file_name', 'cliente', 'remito_numero', 'cuit', 'fecha', 
                          'validez_oferta', 'metodo_pago', 'condicion_de_pago',
-                         'plazo_estimado_entrega', 'direccion', 'condicion_iva', 
-                         'opciones', 'observaciones', 'productos_pedidos']
+                         'plazo_estimado_entrega', 'direccion', 
+                         'opciones', 'observaciones']
         
         for field in required_fields:
             if field not in data:
