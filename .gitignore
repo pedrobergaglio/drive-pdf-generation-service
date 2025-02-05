@@ -9,6 +9,8 @@ service_account.json
 # Dependencies
 /node_modules
 /vendor
+/generated_pdfs
+/venv
 
 # IDE files
 .vscode/

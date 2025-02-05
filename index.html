@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppSheet Embedded Demo</title>
+    <style>
+        #appsheet-container {
+            width: 100%;
+            height: 800px;
+            border: 2px solid black;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>AppSheet Embedded Demo</h1>
+    
+    <div id="appsheet-container"></div>
+
+    <script type="text/javascript">
+        // Configure AppSheet options
+        window.APPSHEET_OPTS = {
+            prefix: 'https://www.appsheet.com',
+            embedUrl: 'https://www.appsheet.com/start/ControlAlquilerPúblicaCopia-665457808'
+        };
+    </script>
+    <script src="https://cdn.appsheet.com/js/appsheet_3.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var container = document.getElementById('appsheet-container');
+            AppSheet.Embed.loadApp(container, {
+                showSignInButton: true,
+                showRefreshButton: true
+            });
+        });
+    </script>
+</body>
+</html>
