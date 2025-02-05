@@ -229,7 +229,7 @@ def generate_presupuesto(data, output_path):
             pdf.set_fill_color(240, 240, 240)
             pdf.set_font('Arial', 'B', 10)
             currency_symbol = "Dólar" in opcion['aclaracion_moneda']
-            header_text = f"Opción {opcion['id_opcion']} - Descuento: {opcion['descuento_gral']}% - Moneda: {opcion['aclaracion_moneda']}"
+            header_text = f"Opción {opcion['id_opcion']} - {opcion['descuento_gral']} - Moneda: {opcion['aclaracion_moneda']}"
             pdf.cell(0, 8, header_text, 1, 1, 'L', True)
             
             # Products header with columns
