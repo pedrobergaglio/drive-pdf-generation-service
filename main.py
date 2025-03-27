@@ -58,7 +58,10 @@ def generate_remito(data, output_path):
         pdf.cell(0, 10, f"{data['remito_numero']}", ln=True)
         
         pdf.set_xy(x_cuit, y_cuit)
-        pdf.cell(0, 10, data['cuit'], ln=True)
+        cuit = data['cuit']
+        if len(cuit) == 11 and cuit.isdigit():
+            cuit = f"{cuit[:2]}-{cuit[2:10]}-{cuit[10:]}"
+        pdf.cell(0, 10, cuit, ln=True)
         
         pdf.set_xy(x_fecha, y_fecha)
         pdf.cell(0, 10, data['fecha'], ln=True)
@@ -81,7 +84,7 @@ def generate_remito(data, output_path):
             pdf.multi_cell(100, 5, producto.get('product', ''))
             y_offset = pdf.get_y()
             pdf.set_xy(x_productos + 140, y_offset - 5)
-            pdf.cell(30, 5, f"N° serie {producto.get('n_serie', '')}" if producto.get('n_serie', '') == "" else "", border=0)
+            pdf.cell(30, 5, f"N° serie: {producto.get('n_serie', '')}" if (producto.get('n_serie', '') != '') else "", border=0)
             y_offset = pdf.get_y() + 5
 
         pdf.output(output_path)
